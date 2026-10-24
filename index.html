@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5f7f6"><title>Control de componentes</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar"><div class="brand"><span class="brand-mark">C</span><div><b>Control de componentes</b><small>Inventario · Planta</small></div></div><div class="top-actions"><span class="live"><i></i> Sistema local</span><button id="exportBtn" class="button secondary">Exportar</button></div></header>
+<main class="layout">
+<section class="intro"><div><p class="eyebrow">INVENTARIO Y CUSTODIA</p><h1>Todo componente,<br><em>en su lugar.</em></h1><p>Consulta existencias, ubicación y movimientos con solo ingresar el número de parte.</p></div><button class="button primary" id="newPartBtn">＋ Registrar componente</button></section>
+<section class="summary" id="summary"></section>
+<section class="workspace">
+<div class="main-column">
+<section class="panel lookup"><div class="panel-heading"><div><span class="eyebrow">CONSULTA RÁPIDA</span><h2>Buscar componente</h2></div><span class="keyboard-hint">Por número de parte</span></div><div class="searchbar"><span>⌕</span><input id="partSearch" type="search" placeholder="Ej. ABC-1042" autocomplete="off"><button id="searchBtn" class="button primary">Consultar</button></div><div id="lookupResult"></div></section>
+<section class="panel inventory"><div class="panel-heading"><div><span class="eyebrow">EXISTENCIAS</span><h2>Inventario de componentes</h2></div><label class="filter"><span>Ver</span><select id="statusFilter"><option value="all">Todos</option><option value="low">Bajo mínimo</option><option value="high">Sobre máximo</option><option value="ok">En rango</option></select></label></div><div class="table-wrap"><table><thead><tr><th>Componente</th><th>Existencia</th><th>Mín. / Máx.</th><th>Ubicación</th><th>Estado</th><th></th></tr></thead><tbody id="inventoryRows"></tbody></table></div><div id="emptyInventory" class="empty hidden">No hay componentes en esta vista.</div></section>
+<section class="panel locations"><div class="panel-heading"><div><span class="eyebrow">MAPA DE ALMACÉN</span><h2>Estantes y niveles</h2></div><span class="muted">6 estantes · 4 niveles</span></div><div id="shelfMap" class="shelf-map"></div></section>
+</div>
+<aside class="panel custody"><div class="panel-heading"><div><span class="eyebrow">TRAZABILIDAD</span><h2>Custodia reciente</h2></div><button class="text-button" id="allMovesBtn">Ver historial →</button></div><div id="custodyList" class="custody-list"></div></aside>
+</section>
+<section class="legend"><span><i class="swatch input"></i>Entrada</span><span><i class="swatch output"></i>Salida</span><span><i class="swatch missing"></i>Faltante</span><span><i class="swatch max"></i>Máximo permisible</span><span><i class="swatch min"></i>Mínimo permisible</span></section>
+</main>
+<div id="modal" class="modal hidden"><div class="modal-card"><button id="closeModal" class="close">×</button><div id="modalContent"></div></div></div><div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body></html>
